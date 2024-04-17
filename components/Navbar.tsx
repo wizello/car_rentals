@@ -4,42 +4,54 @@ import CustomButton from "./CustomButton";
 
 const Navbar = () => {
   return (
-    <header className="w-full z-10">
-      <nav className="max-w-[1440px] mx-auto flex 
-      justify-between items-center sm:px-16 px-5 py--3">
-        <div className="top-0 right-0 left-0 bottom-4 bg-white z-0" style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)" }}></div>
+    <header className="w-full fixed top-0 z-10 bg-white shadow-md border-b border-gray-200">
+      <nav className="mx-auto flex items-center justify-between sm:px-16 px-5 py--3">
+        <div className="flex items-center justify-start ml-0">
+          <Link href="/" className="z-10">
+            <Image
+              src="/newlogo11.svg"
+              alt="Luxe & Drive Logo"
+              width={180}
+              height={18}
+              className="object-contain"
+            />
+          </Link>
+        </div>
 
-        <Link href="/" className="flex justify-center
-         items-center z-10">
-          <Image
-            src="/newlogo11.svg"
-            alt="Luxe & Drive Logo"
-            width={200}
-            height={20}
-            className="object-contain"
-            style={{ marginLeft: "-50px" }}
-          />
-        </Link>
-        <Link href="/signin">
-          <CustomButton
-            title="Sign In"
-            btnType="button"
-            containerStyles="text-white font-bold rounded-full bg-primary-green z-10 min-w-[130px] left-25"
-          />
-        </Link>
-        <Link href="/signup">
-          <CustomButton
-            title="Sign Up"
-            btnType="button"
-            containerStyles="text-white font-bold rounded-full bg-primary-green z-10 min-w-[130px] left-25"
-          />
-        </Link>
+        <div className="flex items-center space-x-4">
+        <Link href="/aboutus">
+            <CustomButton
+              title="About Us"
+              btnType="button"
+              containerStyles="text-primary-green font-bold rounded-full z-10 min-w-[130px]"
+            />
+          </Link>
+          <Link href="/racetracks">
+            <CustomButton
+              title="Race tracks"
+              btnType="button"
+              containerStyles="text-primary-green font-bold rounded-full z-10 min-w-[130px]"
+            />
+          </Link>
 
-
+          <Link href="/signup">
+            <CustomButton
+              title="Sign Up"
+              btnType="button"
+              containerStyles="text-white font-bold rounded-full bg-primary-green z-10 min-w-[130px]"
+            />
+          </Link>
+          <Link href="/signin">
+            <CustomButton
+              title="Sign In"
+              btnType="button"
+              containerStyles="text-white font-bold rounded-full bg-primary-green z-10 min-w-[130px]"
+            />
+          </Link>
+        </div>
       </nav>
     </header>
+  );
+};
 
-  )
-}
-
-export default Navbar
+export default Navbar;

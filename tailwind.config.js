@@ -38,6 +38,8 @@ module.exports = {
         //'conic-gradient(from 180deg at 50% 50%, var (--tw-gradient-stops))',
         'pattern': "url('/pattern3.png')",
         'hero-bg': "url('/hero-bg2.png')",
+        'hero-bg2': "url('/stacked_blob.svg')",
+        'hero-bg3': "url('/Dual_blob.svg')",
       }
     },
   },
