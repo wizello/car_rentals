@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import db from './database';
+import { Database } from 'sqlite3';
 import { NextResponse } from 'next/server';
 
 
