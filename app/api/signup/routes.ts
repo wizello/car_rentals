@@ -1,24 +1,25 @@
-//@ts-ignore
 import { NextApiRequest, NextApiResponse } from 'next';
 import db from './database'; // Import the db object from your database module
+import { NextResponse } from 'next/server';
 
-export function POST(req: NextApiRequest, res: NextApiResponse) {
+export function POST(req: NextApiRequest) {
     const { name, email, password } = req.body;
     db.run('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password], function (err) {
         if (err) {
-            res.status(500).json({ error: err.message });
+            NextResponse.json({ error: err.message }, { status: 500 });
             return;
         }
-        res.status(201).json({ id: this.lastID });
+        return NextResponse.json({ id: this.lastID }, { status: 201 });
     });
 }
 
-export function GET(req: NextApiRequest, res: NextApiResponse) {
+export function GET(req: NextApiRequest) {
     db.all('SELECT * FROM users', (err, rows) => {
         if (err) {
-            res.status(500).json({ error: err.message });
+            NextResponse.json({ error: err.message }, { status: 500 });
             return;
         }
-        res.status(200).json(rows);
+        NextResponse.json(rows, { status: 200 });
     });
 }
+
