@@ -1,29 +1,24 @@
+//@ts-ignore
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Database } from 'sqlite3';
-import { NextResponse } from 'next/server';
+import db from './database'; // Import the db object from your database module
 
-
-export function POST(req: NextApiRequest) {
+export function POST(req: NextApiRequest, res: NextApiResponse) {
     const { name, email, password } = req.body;
     db.run('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password], function (err) {
         if (err) {
-            NextResponse.json({ error: err.message }, { status: 500 });
+            res.status(500).json({ error: err.message });
             return;
         }
-        return NextResponse.json({ id: this.lastID }, { status: 201 });
-    }
-    );
-    NextResponse.json({},{ status: 400 });
-
+        res.status(201).json({ id: this.lastID });
+    });
 }
 
-export function GET(req: NextApiRequest) {
+export function GET(req: NextApiRequest, res: NextApiResponse) {
     db.all('SELECT * FROM users', (err, rows) => {
         if (err) {
-            NextResponse.json({ error: err.message }, { status: 500 });
+            res.status(500).json({ error: err.message });
             return;
         }
-        NextResponse.json(rows, { status: 200 });
+        res.status(200).json(rows);
     });
-    NextResponse.json({},{ status: 400 });
 }

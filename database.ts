@@ -1,4 +1,5 @@
- import { Database } from "sqlite3";
+//@ts-ignore
+import { Database } from "sqlite3";
 const sqlite3 = require('sqlite3').verbose();
 
 const DB_PATH = '/database.ts'; // Path to your SQLite database file
